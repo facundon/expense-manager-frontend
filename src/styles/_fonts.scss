@@ -1,0 +1,25 @@
+@use "variables" as v;
+@use "functions" as f;
+
+@font-face {
+   font-family: "Quicksand";
+   src: url("../fonts/Quicksand-VariableFont_wght.ttf")
+      format("truetype-variations");
+   font-weight: 1 999;
+}
+
+p,
+span {
+   margin: 0;
+   font-size: f.getFontProp("size", "secondary");
+}
+
+h1 {
+   margin: 0;
+   font-size: f.getFontProp("size", "title");
+}
+
+h2 {
+   margin: 0;
+   font-size: f.getFontProp("size", "primary");
+}

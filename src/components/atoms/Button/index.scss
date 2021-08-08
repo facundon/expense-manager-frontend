@@ -1,0 +1,172 @@
+@use "../../../styles/functions" as f;
+
+.btn-wrapper {
+   $button-size-sm: 2.3em;
+   $button-size-md: 3em;
+
+   cursor: pointer;
+   user-select: none;
+   border-radius: 15%;
+   border-bottom-left-radius: initial;
+   background-size: 200%;
+   box-shadow: 0px 4px 8px 0 f.getColor("pink", 200, 0.3);
+   transition: transform cubic-bezier(0.075, 0.82, 0.165, 1) 0.2s,
+      box-shadow ease-in-out 0.1s, background-position ease 0.5s,
+      filter cubic-bezier(0.46, 0.54, 0.84, 1.27) 500ms;
+   button {
+      font: inherit;
+      color: inherit;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: inherit;
+      background-color: transparent;
+      padding: 0.4em;
+      margin: 0;
+      border: none;
+      height: 100%;
+      width: 100%;
+      outline: none;
+      &:focus-visible {
+         outline: none;
+      }
+   }
+   &:hover,
+   &:focus,
+   &:focus-visible {
+      text-decoration: none;
+      outline: none;
+      background-position: right;
+      filter: hue-rotate(-80deg);
+   }
+   &:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 4px f.getColor("pink", 400, 0.5);
+   }
+   &.disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      &:active,
+      &:hover,
+      &:focus,
+      &:focus-visible {
+         transform: none;
+         box-shadow: 0px 4px 8px 0 f.getColor("pink", 200, 0.3);
+         background-position: initial;
+         filter: none;
+      }
+   }
+   span {
+      color: f.getColor("white", 200);
+      padding: 0;
+      margin: 0;
+   }
+
+   &.primary {
+      background-image: linear-gradient(
+         255deg,
+         f.getColor("pink", 200),
+         f.getColor("orange", 200)
+      );
+   }
+
+   &.secondary {
+      background-image: linear-gradient(
+         205deg,
+         f.getColor("violet", 400),
+         f.getColor("pink", 400)
+      );
+   }
+
+   &.subtle {
+      background-color: transparent;
+      border: 3px solid;
+      border-image: linear-gradient(
+         to bottom,
+         f.getColor("violet", 400),
+         f.getColor("pink", 400)
+      );
+      border-image-slice: 1;
+      transition: filter 600ms ease-in-out;
+      &:hover,
+      &:focus {
+         filter: hue-rotate(340deg);
+      }
+   }
+
+   &.circle {
+      border-radius: 50%;
+   }
+
+   &.minimalist {
+      position: relative;
+      box-shadow: none;
+      &::before {
+         content: "";
+         position: absolute;
+         top: 0;
+         left: 0;
+         height: 100%;
+         width: 100%;
+         transition: all 0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+         border-radius: 100%;
+         z-index: -1;
+      }
+      &:hover::before,
+      &:focus::before {
+         box-shadow: inset 0 $button-size-sm/2 + 0.25em 0.4em 0em
+               f.getColor("pink", 400),
+            inset 0 $button-size-sm/-2 - 0.05em 0.3em 0
+               f.getColor("violet", 400, 0.9);
+      }
+   }
+
+   &.with-text {
+      font-weight: 400;
+      border-radius: 0.3em;
+      button {
+         padding: 0.5em 1em;
+      }
+      span {
+         padding-right: 0.3em;
+      }
+      &.md {
+         font-size: 1.3em;
+         span {
+            padding-right: 0.3em;
+            font-size: 1.6em;
+         }
+      }
+   }
+
+   &.link {
+      display: inline-block;
+      border: none;
+      box-shadow: none;
+      background-color: transparent;
+      padding: 0;
+      margin: 0;
+      width: max-content;
+      text-decoration: underline;
+      font-weight: normal;
+      font-size: inherit;
+      &:active {
+         transform: translate(0);
+      }
+   }
+   span.sm {
+      font-size: 1.5em;
+   }
+   span.md {
+      font-size: 2.6em;
+   }
+   &.sm > button > .loader-wrapper {
+      height: 1.5em;
+      & .loader > div {
+         margin: 0 0.1em;
+      }
+   }
+   &.md > button > .loader-wrapper {
+      height: 2.6em;
+   }
+}
