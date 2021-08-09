@@ -1,0 +1,14 @@
+@use "../../../styles/functions" as f;
+
+table {
+   width: 100%;
+   th {
+      border-bottom: "solid 3px black";
+      background: f.getColor("white", 200);
+      color: f.getColor("black", 400);
+      font-weight: "bold";
+   }
+   td {
+      padding: 0.5em;
+   }
+}

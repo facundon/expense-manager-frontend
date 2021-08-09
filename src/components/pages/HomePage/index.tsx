@@ -1,13 +1,13 @@
-import { useTitle } from "hookrouter"
-import { APP_NAME } from "../../../config"
+import { Table } from "../../molecules"
 import { Home } from "../../templates"
 
 export interface HomePageProps {}
 
 const HomePage: React.FC<HomePageProps> = () => {
-   useTitle(APP_NAME)
-   const message = <p>Home!!!</p>
-   return <Home message={message} />
+   const total = <h1>A pagar: $123</h1>
+   const expensesTable = <Table />
+
+   return <Home total={total} expensesTable={expensesTable} />
 }
 
 export default HomePage

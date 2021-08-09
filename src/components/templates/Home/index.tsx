@@ -1,11 +1,18 @@
 import { ReactElement } from "react"
 
+import "./index.scss"
 export interface HomeProps {
-   message: ReactElement
+   total: ReactElement
+   expensesTable: ReactElement
 }
 
-const Home: React.FC<HomeProps> = ({ message }) => {
-   return <div>{message}</div>
+const Home: React.FC<HomeProps> = ({ total, expensesTable }) => {
+   return (
+      <div>
+         <div className="center">{total}</div>
+         <div className="center expense-table">{expensesTable}</div>
+      </div>
+   )
 }
 
 export default Home
