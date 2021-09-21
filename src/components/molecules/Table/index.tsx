@@ -1,52 +1,39 @@
 import { useMemo } from "react"
-import { useQuery } from "react-query"
 import { useTable } from "react-table"
-import axios from "axios"
+import { Expense } from "../../../@types/expense"
 
 import "./index.scss"
 
-export interface TableProps {}
+export interface TableProps {
+   expenses: Expense[]
+}
 
-const Table: React.FC<TableProps> = () => {
-   const getTableData = () =>
-      axios.get(process.env.REACT_APP_API_URI! + "/expenses")
-
-   const { data, isLoading } = useQuery("getExpenses", getTableData)
-
-   const tableData = useMemo(
-      () => [
-         {
-            concept: "Hello",
-            value: "World",
-         },
-         {
-            concept: "react-table",
-            value: "rocks",
-         },
-         {
-            concept: "whatever",
-            value: "you want",
-         },
-      ],
-      []
-   )
-
+const Table: React.FC<TableProps> = ({ expenses }) => {
    const columns = useMemo(
       () => [
          {
-            Header: "Concepto",
+            Header: "Concept",
             accessor: "concept" as "concept",
          },
          {
-            Header: "Valor",
+            Header: "Value",
             accessor: "value" as "value",
          },
       ],
       []
    )
 
+   const data = useMemo(
+      () =>
+         expenses?.map(expense => ({
+            concept: expense.concept,
+            value: expense.value,
+         })),
+      [expenses]
+   )
+
    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-      useTable({ columns, data: tableData })
+      useTable({ columns, data })
 
    return (
       <table {...getTableProps()}>

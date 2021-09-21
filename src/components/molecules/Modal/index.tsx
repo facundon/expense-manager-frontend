@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react"
 import { Portal } from "../../atoms"
 import "./index.scss"
 
-type ModalProps = {
+export type ModalProps = {
    open: boolean
    size?: string
    locked?: boolean
