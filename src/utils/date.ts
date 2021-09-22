@@ -4,5 +4,5 @@ export const getDate = () => {
 }
 
 export const getCurrentMonth = () => {
-   return new Date().getMonth()
+   return new Date().getMonth() + 1
 }

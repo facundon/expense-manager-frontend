@@ -1,12 +1,11 @@
 import { FunctionComponent } from "react"
 import { Control, Controller } from "react-hook-form"
+import { Input } from ".."
 import Select from "react-select"
 import Switch from "react-switch"
 
 import { customStyles } from "./styles"
-import "./index.scss"
-import { Input } from ".."
-interface FormSelectProps {
+interface FormInputProps {
    control: Control<any>
    name: string
    label: string
@@ -18,7 +17,7 @@ interface FormSelectProps {
    disabled?: boolean
 }
 
-const FormSelect: FunctionComponent<FormSelectProps> = ({
+const FormInput: FunctionComponent<FormInputProps> = ({
    control,
    name,
    label,
@@ -62,4 +61,4 @@ const FormSelect: FunctionComponent<FormSelectProps> = ({
    )
 }
 
-export default FormSelect
+export default FormInput

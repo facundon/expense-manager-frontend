@@ -25,9 +25,18 @@ const HomePage: React.FC<HomePageProps> = () => {
       getAsync()
    }, [getExpenses])
 
-   const total = expenses ? <Total expenses={expenses} /> : null
+   const total = expenses ? (
+      expenses.length > 0 ? (
+         <Total expenses={expenses} />
+      ) : (
+         <h2>No Expenses Yet</h2>
+      )
+   ) : null
 
-   const expensesTable = expenses ? <Table expenses={expenses} /> : null
+   const expensesTable =
+      expenses && expenses.length > 0 ? (
+         <Table expenses={expenses} setExpenses={setExpenses} />
+      ) : null
 
    const actions = <ActionsBar onAction={setExpenses} />
    return expenses ? (

@@ -1,0 +1,32 @@
+@use "../../../styles/functions" as f;
+
+.total {
+   text-align: center;
+   font-weight: 400;
+   user-select: none;
+   letter-spacing: 0.2em;
+   background: linear-gradient(
+      to right,
+      f.getColor("pink", 400) 10%,
+      f.getColor("blue", 400),
+      f.getColor("violet", 200),
+      f.getColor("orange", 400, 0.8),
+      f.getColor("green", 200) 90%
+   );
+   background-size: 400%;
+   background-clip: text;
+   -webkit-text-fill-color: transparent;
+   animation: flow 5s linear infinite;
+
+   @keyframes flow {
+      0% {
+         background-position: 0%;
+      }
+      50% {
+         background-position: 100%;
+      }
+      100% {
+         background-position: 0%;
+      }
+   }
+}
